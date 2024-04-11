@@ -1,0 +1,1 @@
+# Initializes scripts folder.

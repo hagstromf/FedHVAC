@@ -1,0 +1,17 @@
+# Ignore caches
+*cache*
+
+# Ignore results folder
+results/
+
+# Ignore plots folder
+plots/
+
+# Ignore environment yml files
+*.yml
+
+# Ignore document files
+*.odt
+
+# Ignore bash scripts
+*.sh

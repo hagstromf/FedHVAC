@@ -1,0 +1,32 @@
+# Setup for a quick test to check that everything is installed correctly
+environments: ['Eplus-global-eval-v2', 
+               'Eplus-global-eval-v2', 
+]
+eval_env: 'Eplus-global-eval-v2'
+---
+global_config: 
+  episodes: 2
+  timesteps_per_episode: 2976
+  reward: linear
+  log_episode: True
+  log_interval: 1
+  log_monthly: True
+  log_weekly: True
+---
+wrapper_config:
+  normalize: True
+  logger: True
+---
+init_kwargs:
+  learning_starts: 100
+  train_freq: 24
+  gradient_steps: -1
+---
+init_policy_kwargs:
+---
+fed_config:
+  aggregation_technique: FedAvg
+---
+eval_config:
+  eval_freq: 1
+  eval_length: 1

@@ -1,0 +1,40 @@
+environments: ['Eplus-datacenter-sydney-continuous-stochastic-forecast-v1',
+               'Eplus-datacenter-bogota-continuous-stochastic-forecast-v1',
+               'Eplus-datacenter-granada-continuous-stochastic-forecast-v1',
+               'Eplus-datacenter-tokyo-continuous-stochastic-forecast-v1', 
+               'Eplus-datacenter-antananarivo-continuous-stochastic-forecast-v1', 
+               'Eplus-datacenter-AZ-continuous-stochastic-forecast-v1', 
+               'Eplus-datacenter-CO-continuous-stochastic-forecast-v1', 
+               'Eplus-datacenter-IL-continuous-stochastic-forecast-v1',
+               'Eplus-datacenter-NY-continuous-stochastic-forecast-v1',
+               'Eplus-datacenter-PA-continuous-stochastic-forecast-v1',
+               'Eplus-datacenter-WA-continuous-stochastic-forecast-v1'
+]
+eval_env: 'Eplus-datacenter-helsinki-continuous-forecast-v1'
+---
+global_config: 
+  episodes: 15
+  timesteps_per_episode: 35040
+  reward: GausTrap
+  log_episode: True
+  log_interval: 1
+  log_monthly: True
+  log_weekly: True
+---
+wrapper_config:
+  normalize: True
+  logger: True
+---
+init_kwargs:
+  learning_starts: 100
+  train_freq: 4
+  gradient_steps: -1
+---
+init_policy_kwargs:
+---
+fed_config:
+  aggregation_technique: FedAvgM
+---
+eval_config:
+  eval_freq: 1
+  eval_length: 3
