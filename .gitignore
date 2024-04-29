@@ -1,3 +1,7 @@
+# Ignore conda folders
+.conda_envs/
+.conda_pkgs/
+
 # Ignore caches
 *cache*
 
@@ -8,7 +12,7 @@ results/
 plots/
 
 # Ignore environment yml files
-*.yml
+env.yml
 
 # Ignore document files
 *.odt
