@@ -10,6 +10,8 @@ Buildings account for 40 \% of global energy consumption. A considerable portion
 
 In this paper, we take a federated learning approach to training the reinforcement learning controller of an HVAC system. A global control policy is learned by aggregating local policies trained on multiple data centers located in different climate zones. The goal of the policy is to simultaneously minimize energy consumption and maximize thermal comfort. The federated optimization strategy indirectly increases both the rate at which experience data is collected and the variation in the data. We demonstrate through experimental evaluation that these effects lead to a faster learning speed, as well as greater generalization capabilities in the federated policy compared to any individually trained policy. Furthermore, the learning stability is significantly improved, with the learning process and performance of the federated policy being less sensitive to the choice of parameters and the inherent randomness of reinforcement learning. We perform a thorough set of experiments, evaluating three different optimizers for local policy training, as well as three different federated learning algorithms.
 
+![](./teaser.png)
+
 ## Installation
 
 The *FedHVAC* software has only been tested with [Ubuntu](https://ubuntu.com/) 20.04, [Sinergym](https://github.com/ugr-sail/sinergym/tree/main) v2.0.0, 
