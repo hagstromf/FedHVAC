@@ -4,6 +4,12 @@ This repo is the codebase used in the research article ["Employing Federated Lea
 
 Instructions for running code COMING SOON.
 
+## Abstract
+
+Buildings account for 40 \% of global energy consumption. A considerable portion of building energy consumption stems from heating, ventilation, and air conditioning (HVAC), and thus implementing smart, energy-efficient HVAC systems has the potential to significantly impact the course of climate change. In recent years, model-free reinforcement learning algorithms have been increasingly assessed for this purpose due to their ability to learn and adapt purely from experience. They have been shown to outperform classical controllers in terms of energy cost and consumption, as well as thermal comfort. However, their weakness lies in their relatively poor data efficiency, requiring long periods of training to reach acceptable policies, making them inapplicable to real-world controllers directly. Hence, common research goals are to improve the learning speed, as well as to improve their ability to generalize, in order to facilitate transfer learning to unseen building environments.
+
+In this paper, we take a federated learning approach to training the reinforcement learning controller of an HVAC system. A global control policy is learned by aggregating local policies trained on multiple data centers located in different climate zones. The goal of the policy is to simultaneously minimize energy consumption and maximize thermal comfort. The federated optimization strategy indirectly increases both the rate at which experience data is collected and the variation in the data. We demonstrate through experimental evaluation that these effects lead to a faster learning speed, as well as greater generalization capabilities in the federated policy compared to any individually trained policy. Furthermore, the learning stability is significantly improved, with the learning process and performance of the federated policy being less sensitive to the choice of parameters and the inherent randomness of reinforcement learning. We perform a thorough set of experiments, evaluating three different optimizers for local policy training, as well as three different federated learning algorithms.
+
 ## Installation
 
 The *FedHVAC* software has only been tested with [Ubuntu](https://ubuntu.com/) 20.04, [Sinergym](https://github.com/ugr-sail/sinergym/tree/main) v2.0.0, 
