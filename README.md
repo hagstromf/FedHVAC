@@ -66,7 +66,7 @@ installed respectively.
 To check if everything has been installed correctly, run the following test simulation:
 
 ```sh
-    python -m src.scripts.multi_agents --algorithm SAC --config configs/test_run.yaml
+    $ python -m src.scripts.multi_agents --algorithm SAC --config configs/test_run.yaml
 ```
 
 
