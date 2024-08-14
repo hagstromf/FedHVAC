@@ -77,10 +77,10 @@ To check if everything has been installed correctly, run the following test simu
 To run a training simulation, execute the `multi_agents.py` script with desired arguments:
 
 ```sh
-    $ python -m src.scripts.multi_agents --algorithm ALGORITHM_NAME --configs PATH_TO_CONFIG_FILE ...
+    $ python -m src.scripts.multi_agents --algorithm ALGORITHM_NAME --config PATH_TO_CONFIG_FILE ...
 ```
 
-`--algorithm` and `--configs` are required arguments. You have to specify the RL algorithm used (either SAC or TD3) and the configuration file specifying the training context (which federated algorithm to use, which training environments to use and so on).
+`--algorithm` and `--config` are required arguments. You have to specify the RL algorithm used (either SAC or TD3) and the configuration file specifying the training context (which federated algorithm to use, which training environments to use and so on).
 
 To get a full list of available arguments, run the command:
 
@@ -88,10 +88,10 @@ To get a full list of available arguments, run the command:
     $ python -m src.scripts.multi_agents --help
 ```
 
-As an example, to run a simulation using SAC and FedAvg, with client learning rate `0.001` and masking threshold `0.0`, and where the performance of the global agent is evaluated every `eval_freq` episodes (defined in `configs/fedavg.yaml`), run the command:
+As an example, to run a simulation using SAC and FedAvg, with client learning rate `0.001` and masking threshold `0.0`, and where the performance of the global agent is evaluated every `eval_freq` episodes (defined in `configs/fedavg.yaml` ), run the command:
 
 ```sh
-    $ python -m src.scripts.multi_agents --algorithm SAC --configs config(fedavg.yaml) --client_lr 0.001 --mask_thres 0.0 --eval
+    $ python -m src.scripts.multi_agents --algorithm SAC --config configs/fedavg.yaml --client_lr 0.001 --mask_thres 0.0 --eval
 ```
 
 See folder `configs/` for available training config files. You can customize these files to fit your needs. We have defined custom training environments in sinergym_extend/__init__.py. For more available environments and more information on how the underlying simulation environments work, see [Sinergym](https://github.com/ugr-sail/sinergym/tree/main).
