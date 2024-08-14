@@ -2,8 +2,6 @@
 
 This repo is the codebase used in the research article ["Employing Federated Learning for Training Autonomous HVAC Systems"](https://arxiv.org/abs/2405.00389). 
 
-Instructions for running code COMING SOON.
-
 ## Abstract
 
 Buildings account for 40 \% of global energy consumption. A considerable portion of building energy consumption stems from heating, ventilation, and air conditioning (HVAC), and thus implementing smart, energy-efficient HVAC systems has the potential to significantly impact the course of climate change. In recent years, model-free reinforcement learning algorithms have been increasingly assessed for this purpose due to their ability to learn and adapt purely from experience. They have been shown to outperform classical controllers in terms of energy cost and consumption, as well as thermal comfort. However, their weakness lies in their relatively poor data efficiency, requiring long periods of training to reach acceptable policies, making them inapplicable to real-world controllers directly. Hence, common research goals are to improve the learning speed, as well as to improve their ability to generalize, in order to facilitate transfer learning to unseen building environments.
@@ -130,7 +128,7 @@ To get a full list of available arguments, run the command:
 
 #### 4. Using tensorboard
 
-If you've set the logger flag under wrapper_config in the config file to True, the simulation while also store tensorboard data. To launch tensorboard with the simulation data, run the following command:
+If you've set the `logger` flag under `wrapper_config` in the config file to `True`, the simulation will also store tensorboard data. To launch tensorboard with the simulation data, run the following command:
 
 ```sh
     $ tensorboard --logdir PATH_TO_SIMULATION_FOLDER
