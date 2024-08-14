@@ -82,10 +82,15 @@ def print_final_round_stats(logdirs: List[str], values: List[str], exp: str=''):
 
 def main(*args, **kwargs):
     parser = argparse.ArgumentParser()
-    parser.add_argument('--logdirs', type=str, nargs='+', help='List of directories from which to retrieve data to summarize.')
-    parser.add_argument('--values', '-y', default=['return'], nargs='+', help='List of values to summarize. Available values are: return, power, std_power and comfort_violation.')
-    parser.add_argument('--exp', type=str, default='', help='A string specifying a subset of experiments found in the provided directories to be \
+    optional = parser._action_groups.pop()
+    required = parser.add_argument_group('required arguments')
+
+    required.add_argument('--logdirs', type=str, nargs='+', help='List of directories from which to retrieve data to summarize.')
+    optional.add_argument('--values', '-y', default=['return'], nargs='+', help='List of values to summarize. Available values are: return, power, std_power and comfort_violation.')
+    optional.add_argument('--exp', type=str, default='', help='A string specifying a subset of experiments found in the provided directories to be \
                                                             summarized based on the experiment names. Can be for example the date or seed of the experiment.')
+    
+    parser._action_groups.append(optional) 
     args = parser.parse_args()
 
     print_final_round_stats(args.logdirs, 

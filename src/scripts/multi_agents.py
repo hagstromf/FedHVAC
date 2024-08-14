@@ -149,7 +149,7 @@ if __name__ == "__main__":
         help='By setting this flag, you will get a more detailed stdout of the training progress.'
     )
 
-    parser._action_groups.append(optional) # added this line
+    parser._action_groups.append(optional)
     args = parser.parse_args()
 
     # Set multiprocessing start method
