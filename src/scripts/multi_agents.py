@@ -10,23 +10,29 @@ from src.utils.fed_utils import make_fed_config
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
-    parser.add_argument(
+    optional = parser._action_groups.pop()
+    required = parser.add_argument_group('required arguments')
+
+    required.add_argument(
         '--algorithm',
         '-alg',
         type=str,
         default='SAC',
         dest='algorithm',
-        help='Algorithm used to train (possible values: SAC, TD3).')
+        help='Algorithm used to train (possible values: SAC, TD3).',
+        required=True
+    )
 
-    parser.add_argument(
+    required.add_argument(
         '--config',
         '-cf',
         type=str,
         dest='config_file',
-        help='Path to the configuration file that specifies training context.'
+        help='Path to the configuration file that specifies training context.',
+        required=True
     )
 
-    parser.add_argument(
+    optional.add_argument(
         '--seed',
         '-s',
         type=int,
@@ -35,7 +41,7 @@ if __name__ == "__main__":
         help='Sets seed of random number generators.'
     )
 
-    parser.add_argument(
+    optional.add_argument(
         '--eval',
         action='store_true',
         dest='eval',
@@ -43,7 +49,7 @@ if __name__ == "__main__":
             The frequency and length of the evaluation is determined by the config file provided.'
     )
 
-    parser.add_argument(
+    optional.add_argument(
         '--mask_thres',
         '-mt',
         type=float,
@@ -52,7 +58,7 @@ if __name__ == "__main__":
         help='Masking threshold to use for gradient masking (federated algorithms)'
     )
 
-    parser.add_argument(
+    optional.add_argument(
         '--local_updates_per_round',
         '-lupr',
         type=int,
@@ -61,7 +67,7 @@ if __name__ == "__main__":
         help='How many local updates for each client to perform before one global update.'
     )
 
-    parser.add_argument(
+    optional.add_argument(
         '--global_lr',
         '-glr',
         type=float,
@@ -70,7 +76,7 @@ if __name__ == "__main__":
         help='The learning rate used for the global update steps.'
     )
 
-    parser.add_argument(
+    optional.add_argument(
         '--client_lr',
         '-clr',
         type=float,
@@ -79,7 +85,7 @@ if __name__ == "__main__":
         help='The learning rate used for the local update steps.'
     )
 
-    parser.add_argument(
+    optional.add_argument(
         '--client_optimizer',
         '-copt',
         type=str,
@@ -88,7 +94,7 @@ if __name__ == "__main__":
         help='The optimizer used in the local training processes (possible values SGD, Adam). '
     )
 
-    parser.add_argument(
+    optional.add_argument(
         '--momentum',
         '-mom',
         type=float,
@@ -97,7 +103,7 @@ if __name__ == "__main__":
         help='The momentum used if client uses SGD as optimizer.'
     )
 
-    parser.add_argument(
+    optional.add_argument(
         '--server_momentum',
         '-ser_mom',
         type=float,
@@ -106,7 +112,7 @@ if __name__ == "__main__":
         help='The momentum used by server in FedAvgM algorithm.'
     )
 
-    parser.add_argument(
+    optional.add_argument(
         '--beta_1',
         '-b_1',
         type=float,
@@ -115,7 +121,7 @@ if __name__ == "__main__":
         help='The first moment parameter of the adaptive federated optimizer (applicable to FedAdam and FedYogi).'
     )
 
-    parser.add_argument(
+    optional.add_argument(
         '--beta_2',
         '-b_2',
         type=float,
@@ -124,23 +130,26 @@ if __name__ == "__main__":
         help='The second moment parameter of the adaptive federated optimizer (applicable to FedAdam and FedYogi).'
     )
 
-    parser.add_argument(
+    optional.add_argument(
         '--max_ep_data_store_num',
         '-medsn',
         type=int,
         dest='max_ep_data_store_num',
         default=2,
         help='How many sinergym simulation episode logs (subrun folders) to store. \
+            The max_ep_data_store_num most recent episodes are stored. \
             The logs require a significant amount of memory, so it is recommended to keep \
             it low when running several experiments.'
     )
 
-    parser.add_argument(
+    optional.add_argument(
         '--verbose',
         action='store_true',
         dest='verbose',
         help='By setting this flag, you will get a more detailed stdout of the training progress.'
     )
+
+    parser._action_groups.append(optional) # added this line
     args = parser.parse_args()
 
     # Set multiprocessing start method
